@@ -1,5 +1,4 @@
 <template>
-  <div class="auth-page">
     <div class="auth-container">
       <div class="auth-header">
         <router-link to="/" class="logo-link">
@@ -73,7 +72,6 @@
         </p>
       </div>
     </div>
-  </div>
 </template>
 
 <script>
