@@ -1,19 +1,9 @@
 <template>
   <section class="key-features">
     <div class="features-grid">
-      <div class="feature-card">
-        <h3>Maritime Job Board</h3>
-        <p>Access thousands of maritime career opportunities worldwide, updated daily.</p>
-      </div>
-
-      <div class="feature-card">
-        <h3>Industry News</h3>
-        <p>Stay informed with the latest maritime industry news and market trends.</p>
-      </div>
-
-      <div class="feature-card">
-        <h3>Maritime Community</h3>
-        <p>Connect with fellow maritime professionals and expand your network.</p>
+      <div class="feature-card" v-for="(feature, index) in features" :key="index">
+        <h3>{{ feature.title }}</h3>
+        <p>{{ feature.description }}</p>
       </div>
     </div>
   </section>
@@ -24,6 +14,20 @@ export default {
   name: 'KeyFeatures',
   data() {
     return {
+      features: [
+        {
+          title: 'Maritime Job Board',
+          description: 'Access thousands of maritime career opportunities worldwide, updated daily.'
+        },
+        {
+          title: 'Industry News',
+          description: 'Stay informed with the latest maritime industry news and market trends.'
+        },
+        {
+          title: 'Maritime Community',
+          description: 'Connect with fellow maritime professionals and expand your network.'
+        }
+      ]
     }
   },
 };
@@ -55,29 +59,39 @@ export default {
 .feature-card {
   background: white;
   padding: 2rem;
-  border-radius: 8px;
+  border-radius: 12px;
   text-align: center;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 180px;
+  border: 2px solid transparent;
+  cursor: pointer;
 }
 
 .feature-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  border-color: #8dc63f;
+}
+
+.feature-card:active {
+  border-color: #333;
+  transform: translateY(-2px);
 }
 
 .feature-card h3 {
-  color: #1e2124;
+  color: #8dc63f;
   font-size: 1.25rem;
   margin-bottom: 1rem;
   font-family: Poppins, sans-serif;
-  font-weight: 600;
+  font-weight: bold;
+  transition: color 0.3s ease;
 }
+
 
 .feature-card p {
   color: #666;
@@ -85,6 +99,15 @@ export default {
   font-size: 0.95rem;
   margin: 0;
   max-width: 280px;
+  transition: color 0.3s ease;
+}
+
+.feature-card:hover p {
+  color: black;
+}
+
+.feature-card:hover h3 {
+  color: rgb(107, 175, 11);
 }
 
 @media (max-width: 1024px) {
