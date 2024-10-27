@@ -5,9 +5,7 @@
         </video>
         <div class="hero-overlay"></div>
         <div class="register-content">
-            <div class="register-container">
-                <RegisterComponent></RegisterComponent>
-            </div>
+            <RegisterComponent></RegisterComponent>
         </div>
     </section>
 </template>
@@ -50,24 +48,9 @@ import RegisterComponent from '@/components/auth/RegisterComponent.vue';
     z-index: 3;
     display: flex;
     justify-content: center;
+    align-items: center;
     width: 100%;
     min-height: 100vh;
     padding: 2rem 1rem;
-}
-
-.register-container {
-    width: 60%;
-    background: white;
-    border-radius: 8px;
-    padding: 2rem;
-    margin: 2rem auto;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-@media (max-height: 800px) {
-    .register-container {
-        margin: 1rem auto;
-        padding: 1.5rem;
-    }
 }
 </style>
