@@ -1,13 +1,14 @@
 <template>
   <section class="hero-section">
     <video 
-      ref="heroVideo"
       class="hero-video" 
       autoplay 
+      loop 
       muted 
       playsinline
-      loop
-      preload="auto"
+      disablepictureinpicture 
+      disableremoteplayback
+      controlslist="nodownload noplaybackrate"
     >
       <source src="@/assets/videos/welcome-to-kabaro-app-loop.mp4" type="video/mp4">
     </video>
@@ -25,33 +26,7 @@
 
 <script>
 export default {
-  name: 'HeroSection',
-  mounted() {
-    // Ensure video plays on mobile devices
-    const video = this.$refs.heroVideo;
-    
-    // Play video when component mounts
-    const playVideo = async () => {
-      try {
-        await video.play();
-      } catch (err) {
-        console.log('Video autoplay failed:', err);
-      }
-    };
-
-    playVideo();
-
-    // Handle visibility changes
-    document.addEventListener('visibilitychange', () => {
-      if (document.visibilityState === 'visible') {
-        playVideo();
-      }
-    });
-  },
-  beforeUnmount() {
-    // Clean up event listener
-    document.removeEventListener('visibilitychange', () => {});
-  }
+  name: 'HeroSection'
 };
 </script>
 
@@ -70,6 +45,17 @@ export default {
   height: 100%;
   object-fit: cover;
   z-index: 1;
+  pointer-events: none; /* Prevents video interactions */
+}
+
+/* Hide play button and controls */
+.hero-video::-webkit-media-controls-start-playback-button,
+.hero-video::-webkit-media-controls-panel,
+.hero-video::-webkit-media-controls-panel-container,
+.hero-video::-webkit-media-controls-overlay-play-button {
+  display: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
 }
 
 .hero-overlay {
