@@ -484,7 +484,7 @@ export default {
     border-radius: 16px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
     padding: 3rem;
-    width: 75%;
+    width: 100%;
     transition: transform 0.3s ease;
 }
 
